@@ -3,7 +3,7 @@ using UnityEngine;
 public class LineOfSight : MonoBehaviour
 {
     [Header("Configuración de Visión")]
-    [SerializeField] private int distance = 8;
+    [SerializeField] public int distance = 8;
     [SerializeField] private int angle = 90;
     [SerializeField] private LayerMask obs;
 
