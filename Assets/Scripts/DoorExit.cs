@@ -1,15 +1,18 @@
+using System.Collections; 
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class DoorExit : MonoBehaviour
 {
     [Header("Configuración de Nivel")]
-    [SerializeField] private string nextLevelName; // Nombre de la siguiente escena
-    [SerializeField] private bool isLastLevel = false; // Marcá esto solo en el Nivel 3
+    [SerializeField] private string nextLevelName;
+    [SerializeField] private bool isLastLevel = false;
+
+    [Header("Pantalla Final")]
+    public GameObject pantallaDeVictoria;
 
     private void OnTriggerEnter(Collider other)
     {
-        // Buscamos el inventario en el Ninja
         PlayerInventory inventory = other.GetComponent<PlayerInventory>();
 
         if (inventory != null)
@@ -42,10 +45,28 @@ public class DoorExit : MonoBehaviour
     {
         Debug.Log("¡GANASTE LA PARTIDA! Escapaste de la prisión.");
 
-        // Esto cierra el juego cuando lo exportes (.exe)
+        if (pantallaDeVictoria != null)
+        {
+            pantallaDeVictoria.SetActive(true);
+            Time.timeScale = 0f; 
+        }
+
+        
+        StartCoroutine(RutinaCierre());
+    }
+
+    
+    private IEnumerator RutinaCierre()
+    {
+        
+        yield return new WaitForSecondsRealtime(10f);
+
+        Debug.Log("Apagando el juego...");
+
+        
         Application.Quit();
 
-        // Esto frena el Play en el editor de Unity
+        
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #endif

@@ -15,12 +15,11 @@ public class Dijkstra : MonoBehaviour
         pending.Enqueue(initialNode, 0);
         visited.Add(initialNode);
 
-        //int counter = 0;
+        
 
         while (!pending.IsEmpty)
         {
-            //counter++;
-            //if (counter > watchDog) break;
+            
 
             Node node = pending.Dequeue();
 

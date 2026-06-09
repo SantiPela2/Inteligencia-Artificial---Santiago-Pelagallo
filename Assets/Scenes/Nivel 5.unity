@@ -2292,8 +2292,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b590cbfca18414c969f8da9031905f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevelName: Nivel 5
-  isLastLevel: 1
+  nextLevelName: Nivel 6
+  isLastLevel: 0
+  pantallaDeVictoria: {fileID: 0}
 --- !u!1001 &1178929042
 PrefabInstance:
   m_ObjectHideFlags: 0
